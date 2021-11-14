@@ -1,0 +1,26 @@
+{
+    "name": "color_game",
+    "version": "1.0.0",
+    "description": "game to pick right color ",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/prajapatiraghulal/color_game.git"
+    },
+    "author": "raghulal",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/prajapatiraghulal/color_game/issues"
+    },
+    "homepage": "https://github.com/prajapatiraghulal/color_game#readme",
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "ejs": "^3.1.6",
+        "express": "^4.17.1",
+        "mathjs": "^9.4.5"
+    }
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Selector Game</title>
+</head>
+
+<body>
+    <div class="main_div">
+
+        <div class="top" id="top1">
+            <bold id="heading">Color Game</bold>
+            <br>
+            <strong id="sub_heading">Choose the correct Color</strong>
+            <br>
+            <p id="answer">
+                <%=data.color[Math.floor(Math.random()*data.difficulty)] %>
+            </p>
+        </div>
+        <form method="post" action="/">
+            <div class="mid" id="mid1">
+                <div class="mid_left">
+                    <button class="menu" name="reset_btn" value="Reset">Reset</button>
+                    <!--<button class="menu" name="login_btn" value="login">Login</button>    -->
+                    <!--<button class="signup" name="signup_btn" value="signup">SignUp</button> -->
+
+                </div>
+
+                <div class="mid_center" name="msg" id="win_message"></div>
+                <div class="mid_right">
+                    <button class="menu" name="difficulty_btn" value="difficulty"> Difficulty</button>
+
+                </div>
+            </div>
+        </form>
+        <div class="bottom" id="bottom1">
+
+            <div class="bottom_inner" id="bottom_up">
+                <% for(var i = 0 ; i< 3; ++i) {  %>
+                    <%- `<div class="color_div" id=${"id_"+i} name=${"box_"+i} style=\"background-color : ${data.color[i]}\"; ></div> ` %>
+                        <% } %>
+
+            </div>
+            <% if(data.difficulty>3 ){%>
+                <div class="bottom_inner" id="bottom_down">
+                    <% for(var i = 3 ; i< 6; ++i) {  %>
+                        <%- `<div class="color_div" id=${"id_"+i} name=${"box_"+i} style=\"background-color : ${data.color[i]}\"; ></div> ` %>
+                            <% } %>
+                </div>
+                <% } %>
+
+
+
+
+        </div>
+
+    </div>
+    <script type="text/javascript">
+        const doc = document.getElementsByClassName("color_div");
+
+        const answer = document.getElementById("answer").textContent.trim();
+
+        for (const element of doc) {
+            element.addEventListener("click", (event) => {
+                if (element.style.backgroundColor == answer) {
+
+                    const inner_doc = document.getElementsByClassName("color_div")
+                    for (var ele of inner_doc) {
+                        if (ele.style.backgroundColor != "rgb(77, 75, 75)") {
+                            ele.style.backgroundColor = answer;
+                            const mid_box = document.getElementById("mid1");
+                            const message = document.getElementById("win_message");
+                            mid_box.style.backgroundColor = answer;
+                            message.textContent = " yay you win";
+
+                        }
+                    }
+
+                } else {
+                    element.style.backgroundColor = "rgb(77, 75, 75)";
+                }
+            });
+        };
+        console.log("found end");
+    </script>
+
+</body>
+
+</html>
